@@ -1,0 +1,5 @@
+- Needs proper README docs
+- Add Taylor to Thorfile/Gemfile
+- More Tests for important bits and LWRP
+- Fix Foodcritic errors
+- maintainer_email in metadata files
