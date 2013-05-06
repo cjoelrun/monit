@@ -23,6 +23,7 @@ when "fedora", "redhat", "centos", "scientific", "amazon"
 
   major = node['platform_version'].to_i
   arch = node['kernel']['machine']
+  server = "http://build.monkeypuppetlabs.com"
 
   if not platform?("fedora")
     include_recipe "yum::epel"
@@ -32,14 +33,14 @@ when "fedora", "redhat", "centos", "scientific", "amazon"
   end
 
   yum_key "RPM-GPG-RCB" do
-    url "http://build.monkeypuppetlabs.com/repo/RPM-GPG-RCB.key"
+    url "#{server}/repo/RPM-GPG-RCB.key"
     action :add
   end
 
   yum_repository "rcb" do
     repo_name "rcb"
     description "RCB Ops Stable Repo"
-    url "http://build.monkeypuppetlabs.com/repo/#{yum_os}/#{major}/#{arch}"
+    url "#{server}/repo/#{yum_os}/#{major}/#{arch}"
     key "RPM-GPG-RCB"
     action :add
   end
@@ -47,7 +48,7 @@ when "fedora", "redhat", "centos", "scientific", "amazon"
   yum_repository "rcb-testing" do
     repo_name "rcb-testing"
     description "RCB Ops Testing Repo"
-    url "http://build.monkeypuppetlabs.com/repo-testing/#{yum_os}/#{major}/#{arch}"
+    url "#{server}/repo-testing/#{yum_os}/#{major}/#{arch}"
     key "RPM-GPG-RCB"
     enabled 1
     action :add
@@ -56,7 +57,8 @@ end
 
 case node["platform"]
 when "ubuntu", "debian"
-  pkg_options = "-o Dpkg::Options:='--force-confold' -o Dpkg::Option:='--force-confdef'"
+  pkg_options = "-o Dpkg::Options:='--force-confold'"
+  pkg_options += " -o Dpkg::Option:='--force-confdef'"
 else
   pkg_options = ""
 end
@@ -102,5 +104,5 @@ template node["monit"]["config_file"] do
     "login_pass" => node["monit"]["login_pass"],
     "allowed_hosts" => node["monit"]["allowed_hosts"]
   )
-  notifies :restart, resources(:service => "monit"), :delayed
+  notifies :restart, "service[monit]", :delayed
 end

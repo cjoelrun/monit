@@ -1,0 +1,4 @@
+Tailor.config do |config|
+  config.formatters 'text'
+  config.recursive_file_set '*.rb'
+end

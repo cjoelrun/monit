@@ -4,7 +4,7 @@ default["monit"]["bind_port"] = "2812"                                        # 
 default["monit"]["bind_host"] = "0.0.0.0"                                     # node_attribute
 default["monit"]["login_user"] = "admin"                                      # node_attribute
 default["monit"]["login_pass"] = "monit"                                      # node_attribute
-default["monit"]["allowed_hosts"] = [ "0.0.0.0/0" ]                           # node_attribute
+default["monit"]["allowed_hosts"] = ["0.0.0.0/0"]                             # node_attribute
 
 case node["platform"]                                                         # node_attribute
 when "fedora", "redhat", "amazon", "centos", "scientific"                     # node_attribute

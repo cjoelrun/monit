@@ -7,3 +7,14 @@ require 'berkshelf/thor'
 require 'kitchen/thor_tasks'
 
 Kitchen::ThorTasks.new
+
+class Tailor < Thor
+  require 'tailor/cli'
+
+  desc 'lint', 'Run a lint test against the Cookbook in your current working directory.'
+  def lint
+     ::Tailor::Logger.log = false
+     tailor = ::Tailor::CLI.new []
+     tailor.execute!
+  end
+end
