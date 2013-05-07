@@ -26,13 +26,12 @@ After installing Vagrant, or if it is already installed, make sure the Berkshelf
 Installing Ruby Gems
 ====================
 
-If you are using your system ruby, you may need to using sudo to install the required gems below.
-If you are using rvm, you may enable the rvmrc file to create a custom gemset for testing:
+If you are using your system ruby, you may need to using `sudo` to install the required gems below.
+If you are using `rvm`, you may enable the `ruby-version` file to create a custom gemset for testing:
 
-    $ cp .rvmrc.example .rvmrc
-    $ source .rvmrc
+    $ cp .ruby-version.example .ruby-version
 
-To install the required ruby gems, ensure you have bundler installed, then run bundle install:
+To install the required ruby gems, ensure you have `bundler` installed, then run `bundle install`:
 
     $ [sudo] gem install bundler
     $ [sudo] bundle install
