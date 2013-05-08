@@ -53,7 +53,7 @@ kitchen with your Rackspace Public Cloud credentials. To do this, simply copy ov
     driver_config:
       rackspace_username: myusername
       rackspace_api_key: a74bc83bs....
-      rackspace_region: :ord
+      rackspace_region: ord
       public_key_path: ~/.ssh/id_rsa.pub
 
 

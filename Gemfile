@@ -11,9 +11,11 @@ group :test do
   gem 'tailor',          '~> 1.2.1'
   gem 'thor-foodcritic', '~> 0.2.0'
 
-  # Move to 1.0 version after release
+  # Move to 1.0 version after release.
   gem 'test-kitchen', git: 'git://github.com/opscode/test-kitchen.git', branch: '1.0'
 
   gem 'kitchen-vagrant',   '~> 0.9.0'
-  gem 'kitchen-rackspace', '~> 0.1.0'
+
+  # Move to 0.1.1 after release. Using git for region support.
+  gem 'kitchen-rackspace', git: 'https://github.com/RoboticCheese/kitchen-rackspace.git'
 end
