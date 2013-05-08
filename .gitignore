@@ -1,6 +1,7 @@
 .kitchen/
 .kitchen.local.yml
 .rvmrc
+.ruby-version
 .vagrant
 Berksfile.lock
 *~
